@@ -1,0 +1,12 @@
+.conteudo {
+    display: flex;
+    width: 100%;
+  }
+  
+  :root {
+    --primaria: #750462;
+    --secundaria: #f07dff;
+    --secundaria-ativa: #cccccc;
+    --fundo: #eeec5f;
+    --fundo-detalhes: #f38adc;
+  }
