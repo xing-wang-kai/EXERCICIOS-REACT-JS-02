@@ -2,6 +2,9 @@
     display: flex;
     width: 100%;
   }
+  .conteudo-principal{
+    flex-grow: 3;
+  }
   
   :root {
     --primaria: #750462;
