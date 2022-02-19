@@ -17,6 +17,7 @@ class CardNota extends Component {
               className="deletsvg"/>
         </header>
         <p className="card-nota_texto">{this.props.texto}</p>
+        <h4>{this.props.categoria}</h4>
         
       </section>
     );

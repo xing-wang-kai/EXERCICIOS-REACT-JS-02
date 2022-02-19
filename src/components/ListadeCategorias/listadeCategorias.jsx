@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import './listadeCategorias.css';
 
+import DeleteItem from './deleteTag/delettag';
+
 class ListadeCategorias extends Component{
     constructor(props){
         super(props);
@@ -23,7 +25,20 @@ class ListadeCategorias extends Component{
             <section className='lista_categoria'>
                 <ul className='lista_categoria-lista'>
                 {this.props.castegorias.map((item, index) => {
-                        return(<li key={index} className='lista_categoria-item' >{item}</li>);
+
+                        return(
+                       
+                        <li key={index}  
+                        className='lista_categoria-item'>
+
+                            {item}
+                              <DeleteItem indice={index} 
+                                          apagarTag={this.props.apagarTag}/>
+                        </li>
+                        
+                        
+                        );
+                        
                     })}
                 </ul>   
                 <input 

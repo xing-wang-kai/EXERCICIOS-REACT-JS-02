@@ -16,13 +16,13 @@ class App extends Component {
     }
   }
 
-  criarNota(titulo, texto){
-    const novaNota = {titulo, texto};
+  criarNota(titulo, texto, categoria){
+    const novaNota = {titulo, texto, categoria};
     const novoArrayNotas = [...this.state.notas,novaNota]
     this.setState({notas:novoArrayNotas})
   }
   deletarNota(index){
-    const arrayDeletar = this.state.notas
+    const arrayDeletar = this.state.notas;
     arrayDeletar.splice(index, 1);
     this.setState({notas:arrayDeletar})
 
@@ -34,14 +34,24 @@ class App extends Component {
     
   }
 
+  deletarTag(indice){
+    const arrayState = this.state.categoria;
+    arrayState.splice(indice, 1);
+    this.setState({categoria:arrayState})
+  }
+
   render() {
     return (
       <section className="conteudo">
-        <FormularioCadastro criarNota={this.criarNota.bind(this)}/>
+        <FormularioCadastro 
+        criarNota={this.criarNota.bind(this)}
+        castegorias = {this.state.categoria}
+        />
         
         <main className="conteudo-principal">
           <ListadeCategorias 
             CriaCategorias={this.CriaCategorias.bind(this)}
+            apagarTag = {this.deletarTag.bind(this)}
             castegorias = {this.state.categoria}
             />
           <ListaDeNotas 
