@@ -5,18 +5,31 @@ import './listadeCategorias.css';
 import DeleteItem from './deleteTag/delettag';
 
 class ListadeCategorias extends Component{
-    constructor(props){
-        super(props);
-        this.tagNotas="";
+    constructor(){
+        super()
+        this.state = {
+            newcategorias:[]
+        }
+        this.inscrever = this._novacategorias.bind(this)
+    }
+
+    componentDidMount(){
+        this.props.categorias.Inscrever(this.inscrever);
+    }
+    componentWillUnmount(){
+        this.props.categorias.desinscrever(this.inscrever)
+      }
+    _novacategorias(categorias){
+        this.setState({...this.state, categorias})
     }
 
     CriaCategorias(e){
         
         if(e.key == "Enter"){
-            this.tagNotas= e.target.value
+            let categorias = e.target.value
             e.preventDefault();
             e.stopPropagation();
-            this.props.CriaCategorias(this.tagNotas)
+            this.props.AdicionarCategoria(categorias)
         }
     }
 
@@ -24,7 +37,7 @@ class ListadeCategorias extends Component{
         return(
             <section className='lista_categoria'>
                 <ul className='lista_categoria-lista'>
-                {this.props.castegorias.map((item, index) => {
+                {this.props.categorias.categorias.map((item, index) => {
 
                         return(
                        
@@ -33,7 +46,7 @@ class ListadeCategorias extends Component{
 
                             {item}
                               <DeleteItem indice={index} 
-                                          apagarTag={this.props.apagarTag}/>
+                                          DeletarCategoria={this.props.DeletarCategoria}/>
                         </li>
                         
                         

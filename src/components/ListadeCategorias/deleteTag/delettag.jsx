@@ -5,7 +5,7 @@ import {ReactComponent as DeleteSVG} from "../../../assets/DeleteSVG.svg"
 class DeleteItem extends Component{
     
     handleapagar(){
-        this.props.apagarTag(this.props.indice);
+        this.props.DeletarCategoria(this.props.indice);
       }
 
     render(){
